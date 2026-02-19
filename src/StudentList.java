@@ -1,47 +1,36 @@
 public class StudentList {
 
-    private Student[] Students;
-    private int StudentCount;
+    private Student[] students;
+    private int studentCount;
 
     public StudentList(int size) {
-        Students = new Student[size];
-        StudentCount = 0;
+        students = new Student[size];
+        studentCount = 0;
     }
 
     public int getStudentCount() {
-        return StudentCount;
+        return studentCount;
+    }
+
+    public Student[] getStudents(String name) {
+        return students;
+    }
+
+    public void decreaseCount() {
+        studentCount--;
     }
 
 
     public void addStudent(Student student) {
-        if  (this.StudentCount < Students.length) {
-            Students[StudentCount] = student;
-            StudentCount++;
+        if  (studentCount >= students.length) {
+            System.out.println("not enough space");
+            return;
         }
+        students[studentCount] = student;
+        studentCount++;
     }
 
-    public Student getStudentByFirstName(String FirstName) {
-        for (int i = 0; i < StudentCount; i++) {
-            if (Students[i].getFirstName().equals(FirstName)) {
-                return Students[i];
-            }
-        }
-        return null;
-    }
 
-    public Student removeStudentByFirstName(String FirstName) {
-        for (int i = 0; i < StudentCount; i++) {
-            if (Students[i].getFirstName().equals(FirstName)) {
-                Students[i] = Students[StudentCount - 1];
-                Students[StudentCount - 1] = null;
-                StudentCount--;
-
-                return  Students[i];
-
-            }
-        }
-        return null;
-    }
 
 }
 

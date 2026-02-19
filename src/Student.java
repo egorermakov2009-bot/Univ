@@ -1,25 +1,25 @@
 public class Student {
 
-    private String FirstName;
-    private String LastName;
-    private String BirthDate;
+    private final String firstName;
+    private final String lastName;
+    private final String birthDate;
 
 
-    public Student(String FirstName, String Lastname, String BirthDate) {
+    public Student(String firstName, String lastname, String birthDate) {
 
-        this.FirstName = FirstName;
-        this.LastName = Lastname;
-        this.BirthDate = BirthDate;
+        this.firstName = firstName;
+        this.lastName = lastname;
+        this.birthDate = birthDate;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
     public String getBirthDate() {
-        return BirthDate;
+        return birthDate;
     }
 
 
