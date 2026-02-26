@@ -1,71 +1,177 @@
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        University university = new University(20);
-        Group group1 = new Group("Sun", 20);
-        Group group2 = new Group("gadu", 30);
+        Scanner sc = new Scanner(System.in);
+        University university = new University(10);
+
+        Group group1 = new Group("Sun", 10);
+        Group group2 = new Group("Mor", 20);
+        Group group3 = new Group("Sho", 30);
+        Group group4 = new Group("Gro", 40);
+
+        group1.addBy(new Student("Fedya", "Fedor", "25.06.2009"));
+        group1.addBy(new Student("Rick", "Fedor", "25.06.2009"));
+        group2.addBy(new Student("Roma", "Fedor", "25.06.2009"));
+        group2.addBy(new Student("Egor", "Ganjubas", "25.06.2009"));
+        group3.addBy(new Student("Egor", "Ermakov", "25.06.2009"));
+        group3.addBy(new Student("Valera", "Fedor", "25.06.2009"));
+        group4.addBy(new Student("Goru", "Fedor", "25.06.2009"));
+        group4.addBy(new Student("Fora", "Fedor", "25.06.2009"));
 
         university.addGroup(group1);
         university.addGroup(group2);
+        university.addGroup(group3);
+        university.addGroup(group4);
 
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-        Student n1 = new Student("Fedya", "Ganjubas", "04.07.2002");
-        Student n2 = new Student("Rick", "Ganjubas", "30.04.2003");
-        Student n3 = new Student("Morty", "Vandonov", "15.03.2006");
-        Student n4 = new Student("Egor", "Ermakov", "25.06.2009");
-        Student n5 = new Student("Fedya", "Ganjubas", "04.07.2002");
-        Student n6 = new Student("Fedya", "Ganjubas", "04.07.2002");
-        Student n7 = new Student("Fedya", "Ganjubas", "04.07.2002");
-        Student n8 = new Student("Fedya", "Ganjubas", "04.07.2002");
-        Student n9 = new Student("Fedya", "Ganjubas", "04.07.2002");
+        while (true) {
+            System.out.println("1 - Add Group");
+            System.out.println("2 - Remove Group");
+            System.out.println("3 - Remove Group by index");
+            System.out.println("4 - Add Student");
+            System.out.println("5 - Remove Student");
+            System.out.println("6 - Remove Student by index");
+            System.out.println("7 - Show groups count");
+            System.out.println("8 - Get students size");
+            System.out.println("9 - Exit");
 
+            int choice = sc.nextInt();
+            sc.nextLine();
 
-        group1.addStudent(n1);
-        group1.addStudent(n2);
-        group1.addStudent(n3);
-        group1.addStudent(n4);
-        group1.addStudent(n5);
-        group1.addStudent(n6);
-        group1.addStudent(n7);
-        group1.addStudent(n8);
-        group2.addStudent(n9);
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+            if (choice == 1) {
+                System.out.print("Enter group name: ");
+                String groupName = sc.nextLine();
 
-//        group1.removeStudentByFirstName("Rick");
-//
-//        Student[] found  = group1.getStudentByFirstName("Rick");
-//        if (found.length == 0) {
-//            System.out.println("No students found");
-//        }else
-//            System.out.println("Found " + found.length + " students" );
+                System.out.print("Enter group size: ");
+                int size = sc.nextInt();
+                sc.nextLine();
 
+                Group group = new Group(groupName, size);
+                university.addGroup(group);
 
-//        System.out.print("Before: ");
-//        System.out.println(group1.getStudentCount());
-//
-//        group1.removeStudentByFirstName("Rick");
-//        System.out.print("After: ");
-//        System.out.println(group1.getStudentCount());
+                System.out.println("Group has been added.");
+            }
 
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-//        Student[] found = group1.getStudentByFirstName("Morty");
-//
-//        if (found.length > 0) {
-//            System.out.println("Найден: " + found[0].getFirstName());
-//        } else {
-//            System.out.println("Не найден");
-//        }
+            else if (choice == 2) {
+                System.out.print("Enter group name to remove: ");
+                String name = sc.nextLine();
+
+                university.removeBy(name);
+
+                System.out.println("Group has been removed.");
+            }
+
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+            else if (choice == 3) {
+                System.out.print("Enter group index to remove: ");
+
+                int index = sc.nextInt();
+
+                System.out.println("Group has been removed.");
+            }
+
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+            else if (choice == 4) {
+                System.out.print("Enter group name: ");
+                String groupName = sc.nextLine();
+
+                Group group = university.getGroupBy(groupName);
+
+                if (group != null) {
+                    System.out.print("Enter student first name: ");
+                    String firstName = sc.nextLine();
+                    System.out.print("Enter student last name: ");
+                    String lastName = sc.nextLine();
+                    System.out.print("Enter student birth date: ");
+                    String birthDate = sc.nextLine();
+
+                    Student student = new Student(firstName, lastName, birthDate);
+                    group.addBy(student);
+                    System.out.println("Student has been added.");
+                } else {
+                    System.out.println("Group not found.");
+                }
+            }
+
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+            else if (choice == 5) {
+                System.out.print("Enter group name: ");
+                String groupName = sc.nextLine();
+
+                Group group = university.getGroupBy(groupName);
+
+                if (group != null) {
+                    System.out.print("Enter student name to remove: ");
+                    String studentName = sc.nextLine();
+
+                    group.removeBy(studentName);
+
+                    System.out.println("Student has been removed.");
+                } else {
+                    System.out.println("Group not found.");
+                }
+            }
+
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+            else if (choice == 6) {
+                System.out.print("Enter group name: ");
+                String groupName = sc.nextLine();
+
+                Group group = university.getGroupBy(groupName);
+
+                if (group != null) {
+                    System.out.print("Enter student index to remove: ");
+                    int index = sc.nextInt();
+
+                    group.removeBy(index);
+
+                    System.out.println("Student has been removed.");
+                } else {
+                    System.out.println("Group not found.");
+                }
+            }
+
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+            else if (choice == 7) {
+                System.out.println("Groups in university: " + university.getSize());
+            }
+
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+            else if (choice == 8) {
+                System.out.print("Enter group name: ");
+                String groupName = sc.nextLine();
+
+                Group group = university.getGroupBy(groupName);
+
+                if (group != null) {
+                    System.out.println("Students in group: " + group.getSize());
+                } else {
+                    System.out.println("Group not found");
+                }
+            }
+
+//            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+            else if (choice == 9) {
+                break;
+            }
+
+        }
 
     }
 
 }
-
-
-
-
-
-
-
-

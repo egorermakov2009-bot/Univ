@@ -6,33 +6,38 @@ public class University {
         groupList = new GroupList(size);
     }
 
+
     public void addGroup(Group group) {
-        groupList.addGroup(group);
+        groupList.add(group);
     }
 
-
-
-    public int getGroupCount() {
-        return groupList.getGroupCount();
+    public void removeBy(Group group) {
+        groupList.removeBy(group);
+    }
+    public void removeBy(int index) {
+        groupList.removeBy(index);
+    }
+    public int indexOf(Group group) {
+        return groupList.indexOf(group);
     }
 
+    public int getSize() {
+        return groupList.getSize();
+    }
 
-    public void removeGroupByName(String groupName) {
-        Group[] groups = groupList.getGroups();
-        int count = groupList.getGroupCount();
-        for (int i = 0; i < count; i++) {
-            if(groups[i].getGroupName().equals(groupName)) {
-                for (int j = i; j < count; j++) {
-                    groups[j] =  groups[j + 1];
-                }
-                groups[count - 1] = null;
-                groupList.decreaseCount();
-
-                return;
+    public Group getGroupBy(String name) {
+        for (int i = 0; i < groupList.getSize(); i++) {
+            Group g = groupList.getBy(i);
+            if (g.getGroupName().equals(name)) {
+                return g;
             }
         }
-
-
+        return null;
     }
+
+    public void removeBy(String Name) {
+        groupList.removeBy(Name);
+    }
+
 
 }

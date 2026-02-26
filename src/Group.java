@@ -9,22 +9,36 @@ public class Group {
         this.studentList = new StudentList(size);
     }
 
-    public int getStudentCount() {
-        return studentList.getStudentCount();
+    public int getSize() {
+        return studentList.getSize();
     }
 
     public String getGroupName() {
         return groupName;
     }
 
-    public void addStudent(Student student) {
-        studentList.addStudent(student);
+    public void addBy(Student student) {
+        studentList.add(student);
+    }
+
+    public void removeBy(Student student) {
+        studentList.removeBy(student);
+    }
+    public void removeBy(int index) {
+        studentList.removeBy(index);
+    }
+    public int indexOf(Student student) {
+        return studentList.indexOf(student);
+    }
+
+    public void removeBy(String firstName) {
+        studentList.removeBy(firstName);
     }
 
 
-    public Student[] getStudentByFirstName(String firstName) {
-        Student[] students = studentList.getStudents(firstName);
-        int size = studentList.getStudentCount();
+    public Student[] getStudentBy(String firstName) {
+        Student[] students = studentList.getStudents();
+        int size = studentList.getSize();
 
         Student[] temp  = new Student[size];
         int count = 0;
@@ -41,24 +55,6 @@ public class Group {
         return result;
     }
 
-    public void removeStudentByFirstName(String name) {
-        Student[] students = studentList.getStudents(name);
-        int size = studentList.getStudentCount();
-        for (int i = 0; i < size; i++) {
-            if (students[i].getFirstName().equals(name)) {
-
-                for (int j = i; j < size - 1; j++) {
-                    students[j] = students[j + 1];
-                }
-                students[size - 1] = null;
-                studentList.decreaseCount();
-                size--;
-                i--;
-            }
-        }
-
-
-    }
 
 
 }

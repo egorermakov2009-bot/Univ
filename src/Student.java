@@ -5,10 +5,10 @@ public class Student {
     private final String birthDate;
 
 
-    public Student(String firstName, String lastname, String birthDate) {
+    public Student(String firstName, String lastName, String birthDate) {
 
         this.firstName = firstName;
-        this.lastName = lastname;
+        this.lastName = lastName;
         this.birthDate = birthDate;
     }
 
