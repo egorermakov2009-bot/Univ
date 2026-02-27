@@ -211,7 +211,7 @@ public class Main {
                 Group group = university.getGroupBy(name);
 
                 if (group == null) {
-                    System.out.println("groups.Group not found");
+                    System.out.println("Group not found");
                 }else {
                     Student[] students = group.getStudentList().getStudents();
 
@@ -222,7 +222,7 @@ public class Main {
                     System.out.println(line);
 
                     if (students.length == 0){
-                        System.out.printf("| %-34s |\n", "No students in university");
+                        System.out.printf("| %-34s |\n", "No students in group");
                     }else{
                         for (int i = 0; i < students.length; i++) {
                             System.out.printf("| %-5s | %-10s |\n",
