@@ -1,4 +1,4 @@
-package students;
+package com.egor.basic.univ.student;
 
 public class Student {
 
@@ -24,5 +24,19 @@ public class Student {
         return birthDate;
     }
 
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Student)) return false;
+
+        Student other = (Student) obj;
+        return firstName.equals(other.firstName)
+                && lastName.equals(other.lastName)
+                && birthDate.equals(other.birthDate);
+    }
 }
