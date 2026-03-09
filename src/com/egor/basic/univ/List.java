@@ -10,9 +10,11 @@ public class List<T> {
         elements = (T[]) new Object[size];
         this.size = 0;
     }
+//    -------------------------------------------------------------------------------------------
     public int getSize() {
         return size;
     }
+//    -------------------------------------------------------------------------------------------
     public void add(T element) {
         if (size == elements.length) {
             resize();
@@ -20,12 +22,14 @@ public class List<T> {
         elements[size] = element;
         size++;
     }
+//    -------------------------------------------------------------------------------------------
     public T getBy(int index) {
         if (index < 0 || index >= size) {
             return null;
         }
         return elements[index];
     }
+//    -------------------------------------------------------------------------------------------
     public int indexOf(T element) {
         for (int i = 0; i < size; i++) {
             if (elements[i].equals(element)) {
@@ -34,6 +38,7 @@ public class List<T> {
         }
         return -1;
     }
+//    -------------------------------------------------------------------------------------------
     public void removeBy(int index) {
         if (index < 0 || index >= size) {
             return;
@@ -44,12 +49,14 @@ public class List<T> {
         elements[size - 1] = null;
         size--;
     }
+//    -------------------------------------------------------------------------------------------
     public void remove(T element) {
         int index = indexOf(element);
         if (index != -1) {
             removeBy(index);
         }
     }
+//    -------------------------------------------------------------------------------------------
     @SuppressWarnings("unchecked")
     private void resize() {
         T[] newArray = (T[]) new Object[elements.length * 2];
