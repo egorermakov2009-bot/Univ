@@ -6,6 +6,9 @@ import com.egor.basic.univ.student.Student;
 
 import java.util.Scanner;
 
+import static com.egor.basic.univ.tasks.Fibonacci.fibonacciLoop;
+import static com.egor.basic.univ.tasks.Fibonacci.fibonacciRecursion;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -40,12 +43,11 @@ public class Main {
             System.out.println("               UNIVERSITY MENU               ");
             System.out.println("==============================================");
 
-            System.out.printf("| %-3s | %-35s |\n", "1", "Add group");
-            System.out.printf("| %-3s | %-35s |\n", "2", "Add Student");
-            System.out.printf("| %-3s | %-35s |\n", "3", "Show groups count");
-            System.out.printf("| %-3s | %-35s |\n", "4", "Show students count");
-            System.out.printf("| %-3s | %-35s |\n", "5", "Admin menu");
-            System.out.printf("| %-3s | %-35s |\n", "6", "Exit");
+            System.out.printf("| %-3s | %-35s |\n", "1", "Add Student");
+            System.out.printf("| %-3s | %-35s |\n", "2", "Show groups count");
+            System.out.printf("| %-3s | %-35s |\n", "3", "Show students count");
+            System.out.printf("| %-3s | %-35s |\n", "4", "Admin menu");
+            System.out.printf("| %-3s | %-35s |\n", "5", "Exit");
 
             System.out.println("==============================================");
             System.out.print("Choose option > ");
@@ -56,17 +58,16 @@ public class Main {
 //            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
             switch (choice) {
-                case 1 -> addGroup(sc, university);
 
-                case 2 -> addStudent(sc, university);
-                
-                case 3 -> System.out.println("Groups in university: " + university.getSize());
+                case 1 -> addStudent(sc, university);
 
-                case 4 -> studentSize(sc, university);
-                
-                case 5 -> adminLog(sc, university);
+                case 2 -> System.out.println("Groups in university: " + university.getSize());
 
-                case 6 -> { return; }
+                case 3 -> studentSize(sc, university);
+
+                case 4 -> adminLog(sc, university);
+
+                case 5 -> { return; }
 
                 default -> System.out.println("Invalid input.");
 
@@ -103,13 +104,14 @@ public class Main {
             System.out.println("                 ADMIN MENU                  ");
             System.out.println("==============================================");
 
-            System.out.printf("| %-3s | %-35s |\n", "1", "Remove group");
-            System.out.printf("| %-3s | %-35s |\n", "2", "Remove group by index");
-            System.out.printf("| %-3s | %-35s |\n", "3", "Remove student");
-            System.out.printf("| %-3s | %-35s |\n", "4", "Remove student by index");
-            System.out.printf("| %-3s | %-35s |\n", "5", "Show group list");
-            System.out.printf("| %-3s | %-35s |\n", "6", "Show student list");
-            System.out.printf("| %-3s | %-35s |\n", "7", "Back to main menu");
+            System.out.printf("| %-3s | %-35s |\n", "1", "Add group");
+            System.out.printf("| %-3s | %-35s |\n", "2", "Remove group");
+            System.out.printf("| %-3s | %-35s |\n", "3", "Remove group by index");
+            System.out.printf("| %-3s | %-35s |\n", "4", "Remove student");
+            System.out.printf("| %-3s | %-35s |\n", "5", "Remove student by index");
+            System.out.printf("| %-3s | %-35s |\n", "6", "Show group list");
+            System.out.printf("| %-3s | %-35s |\n", "7", "Show student list");
+            System.out.printf("| %-3s | %-35s |\n", "8", "Back to main menu");
 
             System.out.println("==============================================");
             System.out.print("Choose option > ");
@@ -119,19 +121,21 @@ public class Main {
 
             switch (aminChoise) {
 
-                case 1 -> removeGroup(sc, university);
+                case 1 -> addGroup(sc, university);
 
-                case 2 -> removeGroupByIndex(sc, university);
+                case 2 -> removeGroup(sc, university);
 
-                case 3 -> removeStudent(sc, university);
+                case 3 -> removeGroupByIndex(sc, university);
 
-                case 4 -> removeStudentByIndex(sc, university);
+                case 4 -> removeStudent(sc, university);
 
-                case 5 -> groupList(university);
+                case 5 -> removeStudentByIndex(sc, university);
 
-                case 6 -> studentList(sc, university);
+                case 6 -> groupList(university);
 
-                case 7 -> { adminMenu = false; }
+                case 7 -> studentList(sc, university);
+
+                case 8 ->  adminMenu = false;
 
             }
 
